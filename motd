@@ -1,0 +1,18 @@
+#!/bin/bash
+# OpenStack Ceph deployment script for Linux Academy Red Hat Engineer in Red
+# Hat
+# OpenStack Prep Course
+#
+# Version 1.0 created 04/28/2017
+#
+# By Treva N. Williams - tribecca [at] tribecc [dot] us
+#
+# This script is provided as a courtesy. It comes with no guarantees of
+# functionality & is run at-your-own-risk. 
+#
+
+Ceph, if previously installed, has been completely removed from your
+environment. You now have a clean slate. Perform the following tasks, starting
+with reinstalling Ceph using the method of your choosing.
+
+1. Install Ceph using the disk mounted on /mnt/ex310 as your OSD location. 
