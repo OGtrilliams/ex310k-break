@@ -19,23 +19,37 @@
 # initial deploy message
 echo "This script will wipe any current ceph deployments before rebooting your
 system. When your server comes back online, you will find tasks in motd."
-
+sleep 3
+#install ceph-deploy
 yum -y install ceph-deploy
+
 sleep 5
+#wipe previous ceph data
+
 sudo ceph-deploy purge ceph1 ceph2 ceph3
+
 sleep 3
 # purge config files
 sudo ceph-deploy purgedata ceph1 ceph2 ceph3
+
 sleep 3 
 # remove keyrings
 sudo ceph-deploy forgetkeys
+
 sleep 4
+#make mount.sh executable
+sudo chmod +x /home/ceph/ex310-break/mount.sh
+
+sleep 2
 # add mount.sh as cron on reboot
 (crontab -l 2>/dev/null; echo "@reboot /home/ceph/ex310-break/mount.sh") crontab -
+
 sleep 5
 # reboot to set changes
 sleep 5
 # clear history 
 history -c
+
 sleep 3
+#reboot to launch practice exam
 sudo systemctl reboot
