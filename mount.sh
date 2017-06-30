@@ -13,3 +13,7 @@ sudo mkfs.xfs $DISK && mount $DISK /mnt/ex310
 sleep 5
 tail -n 1 /etc/mtab >> /etc/fstab
 
+# delete history
+
+history -c
+

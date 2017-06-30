@@ -1,16 +1,23 @@
- OpenStack Ceph deployment script for the Red Hat Engineer in Red Hat
- OpenStack Prep Course
+#README
+OpenStack Ceph deployment script for the Red Hat Certified Engineer in Red Hat OpenStack
+Prep Course
 
- Version 1.0 created 06/27/2017
+Version 1.0 created 06/27/2017
 
  By Treva N. Williams
 
- This script is provided as a courtesy under the GPL-3.0 license. It comes
- with no guarantees of
- functionality, no warranties, & is run at-your-own-risk. 
+This script is provided as a courtesy under the GPL-3.0 license. It comes with
+no guarantees of functionality, no warranties, and is run at-your-own-risk.
 
- Run this script on the Ceph OSD node in your KVM environment. It will remove
- & destroy ALL data from your previous deployment. Please create backups of
- any Ceph data you want to keep before launching this script.
+Run this script on the Ceph OSD node in your KVM environment. It will remove
+and destroy ALL data from your previous deployment. Please create backups of
+any Ceph data you want to keep before launching this script. 
 
- This script is a work in progress & will be updated frequently. 
+#DO NOT EXECUTE THIS SCRIPT DIRECTLY ON YOUR WORKSTATION.
+
+This script is a work in progress and will be updated frequently.
+
+In order to perform this lab you will need a two-node OpenStack environment
+running Nova, Neutron, Cinder, Swift, and Glance services at minimum, and at
+least three nodes (admin, mon, osd) for Ceph deployment. Download this script
+to the Ceph user's home directory under /home/ceph/. 

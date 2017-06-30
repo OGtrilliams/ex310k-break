@@ -1,18 +1,61 @@
-#!/bin/bash
-# OpenStack Ceph deployment script for Linux Academy Red Hat Engineer in Red
-# Hat
-# OpenStack Prep Course
-#
-# Version 1.0 created 04/28/2017
-#
-# By Treva N. Williams - tribecca [at] tribecc [dot] us
-#
-# This script is provided as a courtesy. It comes with no guarantees of
-# functionality & is run at-your-own-risk. 
-#
+Red Hat Engineer in Red Hat OpenStack Practice exam
 
 Ceph, if previously installed, has been completely removed from your
 environment. You now have a clean slate. Perform the following tasks, starting
 with reinstalling Ceph using the method of your choosing.
 
-1. Install Ceph using the disk mounted on /mnt/ex310 as your OSD location. 
+1. Install Ceph Kraken (stable) using the disk mounted on /mnt/ex310 as your
+OSD location. You can use whatever deployment method you prefer. Cephx
+authentication is not required.
+2. Add ceph as a backend for OpenStack Glance. 
+3. Verify installation by creating a fedora-atomic image
+(https://getfedora.org/en/atomic/download/) using appropriate settings.
+4. Create a 5GB Cinder volume named cephalopod using the Ceph RBD backend
+under the rainbow project. 
+5. Add a project named rainbow. Under this project create the following users.
+All users should have the password openstack.
+    - Rose
+    - Orenthal
+    - Yolanda
+    - Gene
+    - Britney
+    - Ivan
+    - Victoria
+6. Add ceph as a backend for Cinder. 
+7. Under the rainbow project, create a new, public network with the following
+settings:
+    - Name: prism
+    - subnet: 172.24.1.0/24
+    - subnet range: 172.24.1.100 - 172.24.1.199
+    - gateway: 172.24.1.1
+    - DNS server: 8.8.8.8
+    - DHCP disabled
+8. Create two new server flavors with the following settings:
+    - c1.small - 1GB RAM, 10GB root disk, 20GB ephemeral disk, 1 vCPU
+    - c1.med - 2GB RAM, 12GB root disk, 40GB ephemeral disk, 2vCPUs
+9. Add ceph as a backend for Nova. 
+10. Under the rainbow project, create a new server named webserver using the
+c1.small flavor and fedora-atomic image, connected to the prism-internal
+network. The webserver should be behind the web-lb load balancer.
+11. Add the floating IP address 172.24.1.140 to webserver.
+12. Under the rainbow project, create a c1.small server using the
+fedora-atomic image named webserver2, connected to the prism-internal network.
+The webserver should be behind the web-lb load balancer.
+13. Create a security group named webserver-sg that permits both secure and
+insecure web traffic, ssh access, and ping. Add the security group to
+webserver and webserver2.
+14. Create a load balancer named web-lb using the round robin protocol. The
+webserver should permit both insecure and secure web traffic, and should be
+connected to the prism-internal network.
+15. Add a web health monitor to the web-lb load balancer that will check each
+node every 30 seconds, with a 10 second timeout, with a maximum of 5 retries
+before failure.
+16. Assign the VIP 172.24.1.170 to the web-lb load balancer. 
+17. Create a new, private network with the following settings:
+    - name: prism-internal
+    - subnet: 192.168.10.0/24
+18. Create a new Debian Stretch image using the Ceph RBD backend, belonging to
+the Rainbow project. Image can be retrieved here -
+http://cdimage.debian.org/cdimage/openstack/current-9/
+19. Create a new Linux bridge named br-310 on your network node adding the IP
+address 192.168.10.84 to your server. The bridge should survive reboot.

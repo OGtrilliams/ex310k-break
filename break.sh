@@ -1,5 +1,5 @@
 #!/bin/bash
-# OpenStack Ceph deployment script for the Red Hat Engineer in Red Hat OpenStack Prep Course
+# OpenStack Ceph deployment script for the Red Hat Certified Engineer in Red Hat OpenStack Prep Course
 #
 # Version 1.0 created 06/27/2017
 #
@@ -16,7 +16,12 @@
 #
 # purge current config
 
+# initial deploy message
+echo "This script will wipe any current ceph deployments before rebooting your
+system. When your server comes back online, you will find tasks in motd."
 
+yum -y install ceph-deploy
+sleep 5
 sudo ceph-deploy purge ceph1 ceph2 ceph3
 sleep 3
 # purge config files
@@ -24,14 +29,13 @@ sudo ceph-deploy purgedata ceph1 ceph2 ceph3
 sleep 3 
 # remove keyrings
 sudo ceph-deploy forgetkeys
-
-
-# reset glance config on controller
-#cat config/glance-api.conf | ssh controller tee /etc/glance/glance-api.conf
-
-# Initial deploy message
-echo "Reboot all servers in your environment. Using the instructions provided in MOTD, build out your Ceph environment
-using whatever deployment method works best for you."
-
-# make follow-up script executable
-sudo chmod +x mount.sh
+sleep 4
+# add mount.sh as cron on reboot
+(crontab -l 2>/dev/null; echo "@reboot /home/ceph/ex310-break/mount.sh") crontab -
+sleep 5
+# reboot to set changes
+sleep 5
+# clear history 
+history -c
+sleep 3
+sudo systemctl reboot
