@@ -31,7 +31,7 @@ git clone https://github.com/OGtrilliams/ex310k-break
 ---
 sudo chmod +x /home/ceph/ex310k-break/break.sh
 ---
-3. Execute break.sh
+3. Execute break.sh as the Ceph user
 ---
 cd ex310k-break 
 ./break.sh
