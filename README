@@ -19,7 +19,9 @@ This script is a work in progress and will be updated frequently.
 
 In order to perform this lab you will need a two-node OpenStack environment
 running Nova, Neutron, Cinder, Swift, and Glance services at minimum, and at
-least three nodes (admin, mon, osd) for Ceph deployment.
+least three nodes (admin, mon, osd) for Ceph deployment. The script should be
+launched as the ceph user with preconfigured, elevated privileges as
+demonstrated in the Linux Academy ex310k course. 
 
 #instructions
 1. Clone the repository to the Ceph user's home directory under /home/ceph/. 
